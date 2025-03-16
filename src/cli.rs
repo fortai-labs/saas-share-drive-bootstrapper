@@ -47,4 +47,4 @@ pub enum Commands {
         #[arg(short, long)]
         output: PathBuf,
     },
-} 
+}

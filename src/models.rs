@@ -143,7 +143,7 @@ pub struct Workflow {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use serde_json::{json, from_value};
+    use serde_json::{from_value, json};
 
     #[test]
     fn test_directory_structure_serialization() {
@@ -154,24 +154,22 @@ mod tests {
             last_updated: Some("2023-01-01".to_string()),
             organization: Some("Test Org".to_string()),
             metadata: None,
-            directories: vec![
-                Directory {
-                    name: "test-dir".to_string(),
-                    display_name: None,
-                    description: "Test Directory".to_string(),
-                    purpose: None,
-                    priority: None,
-                    access_level: None,
-                    retention_policy: None,
-                    readme_extra: None,
-                    allowed_file_types: None,
-                    tags: None,
-                    workflows: None,
-                    additional_info: None,
-                    subdirectories: None,
-                    extra: HashMap::new(),
-                }
-            ],
+            directories: vec![Directory {
+                name: "test-dir".to_string(),
+                display_name: None,
+                description: "Test Directory".to_string(),
+                purpose: None,
+                priority: None,
+                access_level: None,
+                retention_policy: None,
+                readme_extra: None,
+                allowed_file_types: None,
+                tags: None,
+                workflows: None,
+                additional_info: None,
+                subdirectories: None,
+                extra: HashMap::new(),
+            }],
         };
 
         let json = serde_json::to_string(&structure).unwrap();
@@ -183,8 +181,14 @@ mod tests {
         assert_eq!(structure.last_updated, deserialized.last_updated);
         assert_eq!(structure.organization, deserialized.organization);
         assert_eq!(structure.directories.len(), deserialized.directories.len());
-        assert_eq!(structure.directories[0].name, deserialized.directories[0].name);
-        assert_eq!(structure.directories[0].description, deserialized.directories[0].description);
+        assert_eq!(
+            structure.directories[0].name,
+            deserialized.directories[0].name
+        );
+        assert_eq!(
+            structure.directories[0].description,
+            deserialized.directories[0].description
+        );
     }
 
     #[test]
@@ -205,11 +209,11 @@ mod tests {
         });
 
         let directory: Directory = from_value(json_value).unwrap();
-        
+
         assert_eq!(directory.name, "parent");
         assert_eq!(directory.description, "Parent directory");
         assert!(directory.subdirectories.is_some());
-        
+
         let subdirs = directory.subdirectories.unwrap();
         assert_eq!(subdirs.len(), 2);
         assert_eq!(subdirs[0].name, "child1");
@@ -240,19 +244,25 @@ mod tests {
         });
 
         let directory: Directory = from_value(json_value).unwrap();
-        
+
         assert_eq!(directory.name, "test-dir");
         assert!(directory.readme_extra.is_some());
-        
+
         let readme = directory.readme_extra.unwrap();
-        assert_eq!(readme.usage_guidelines, Some("Use this for important files".to_string()));
-        assert_eq!(readme.file_naming_convention, Some("prefix_name_date.ext".to_string()));
-        
+        assert_eq!(
+            readme.usage_guidelines,
+            Some("Use this for important files".to_string())
+        );
+        assert_eq!(
+            readme.file_naming_convention,
+            Some("prefix_name_date.ext".to_string())
+        );
+
         assert!(readme.examples.is_some());
         let examples = readme.examples.unwrap();
         assert_eq!(examples.len(), 1);
         assert_eq!(examples[0].description, "Example file");
-        
+
         assert!(readme.faq.is_some());
         let faqs = readme.faq.unwrap();
         assert_eq!(faqs.len(), 1);
@@ -272,15 +282,15 @@ mod tests {
         });
 
         let metadata: Metadata = from_value(json_value).unwrap();
-        
+
         assert_eq!(metadata.purpose, Some("Test purpose".to_string()));
         assert!(metadata.governance.is_some());
         assert!(metadata.tags.is_some());
-        
+
         let governance = metadata.governance.unwrap();
         assert_eq!(governance.owner, Some("Test Owner".to_string()));
         assert_eq!(governance.review_cycle, Some("Quarterly".to_string()));
-        
+
         let tags = metadata.tags.unwrap();
         assert_eq!(tags.len(), 2);
         assert_eq!(tags[0], "test");
@@ -297,22 +307,22 @@ mod tests {
         });
 
         let directory: Directory = from_value(json_value).unwrap();
-        
+
         assert_eq!(directory.name, "test-dir");
         assert_eq!(directory.description, "Test directory");
         assert!(directory.extra.contains_key("custom_field"));
         assert!(directory.extra.contains_key("another_custom"));
-        
+
         if let Some(value) = directory.extra.get("custom_field") {
             assert_eq!(value.as_str().unwrap(), "custom value");
         } else {
             panic!("Expected custom_field to exist");
         }
-        
+
         if let Some(value) = directory.extra.get("another_custom") {
             assert_eq!(value.as_i64().unwrap(), 123);
         } else {
             panic!("Expected another_custom to exist");
         }
     }
-} 
+}
