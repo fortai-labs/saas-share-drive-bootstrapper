@@ -1,0 +1,203 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Directory Structure Schema",
+	"description": "Schema for defining a hierarchical directory structure with enhanced README documentation",
+	"type": "object",
+	"properties": {
+		"name": {
+			"type": "string",
+			"description": "Name of the root directory (company name)"
+		},
+		"description": {
+			"type": "string",
+			"description": "Description of the root directory to be included in README"
+		},
+		"version": {
+			"type": "string",
+			"description": "Version of the directory structure schema",
+			"default": "1.0.0"
+		},
+		"last_updated": {
+			"type": "string",
+			"format": "date-time",
+			"description": "When the directory structure was last updated"
+		},
+		"organization": {
+			"type": "string",
+			"description": "Organization that owns this directory structure"
+		},
+		"metadata": {
+			"type": "object",
+			"description": "Additional metadata about the directory structure",
+			"properties": {
+				"purpose": {
+					"type": "string",
+					"description": "Overall purpose of this directory structure"
+				},
+				"governance": {
+					"type": "object",
+					"description": "Governance information for the directory structure",
+					"properties": {
+						"owner": {
+							"type": "string",
+							"description": "Person or team responsible for maintaining the directory structure"
+						},
+						"review_cycle": {
+							"type": "string",
+							"description": "How often the directory structure should be reviewed"
+						}
+					}
+				},
+				"tags": {
+					"type": "array",
+					"description": "Tags for categorizing the directory structure",
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"directories": {
+			"type": "array",
+			"description": "Array of top-level directories",
+			"items": {
+				"$ref": "#/definitions/directory"
+			}
+		}
+	},
+	"required": ["name", "description", "directories", "version"],
+	"definitions": {
+		"directory": {
+			"type": "object",
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": "Name of the directory"
+				},
+				"display_name": {
+					"type": "string",
+					"description": "Human-readable name for display purposes"
+				},
+				"description": {
+					"type": "string",
+					"description": "Description of the directory to be included in README"
+				},
+				"purpose": {
+					"type": "string",
+					"description": "Specific purpose of this directory"
+				},
+				"priority": {
+					"type": "integer",
+					"description": "Priority level of this directory (1-5, with 1 being highest)",
+					"minimum": 1,
+					"maximum": 5
+				},
+				"access_level": {
+					"type": "string",
+					"enum": ["public", "team", "restricted", "confidential"],
+					"description": "Access level required for this directory"
+				},
+				"retention_policy": {
+					"type": "string",
+					"description": "Data retention policy for this directory"
+				},
+				"readme_extra": {
+					"type": "object",
+					"description": "Additional README content beyond the basic description",
+					"properties": {
+						"usage_guidelines": {
+							"type": "string",
+							"description": "Guidelines for how to use this directory"
+						},
+						"file_naming_convention": {
+							"type": "string",
+							"description": "Convention for naming files in this directory"
+						},
+						"examples": {
+							"type": "array",
+							"description": "Example files or use cases",
+							"items": {
+								"type": "object",
+								"properties": {
+									"description": { "type": "string" },
+									"example": { "type": "string" }
+								}
+							}
+						},
+						"related_resources": {
+							"type": "array",
+							"description": "Links to related resources",
+							"items": {
+								"type": "object",
+								"properties": {
+									"title": { "type": "string" },
+									"url": { "type": "string" },
+									"description": { "type": "string" }
+								},
+								"required": ["title", "url"]
+							}
+						},
+						"contact_person": {
+							"type": "object",
+							"description": "Person responsible for this directory",
+							"properties": {
+								"name": { "type": "string" },
+								"role": { "type": "string" },
+								"email": { "type": "string" },
+								"slack_channel": { "type": "string" }
+							}
+						},
+						"faq": {
+							"type": "array",
+							"description": "Frequently asked questions about this directory",
+							"items": {
+								"type": "object",
+								"properties": {
+									"question": { "type": "string" },
+									"answer": { "type": "string" }
+								}
+							}
+						}
+					}
+				},
+				"allowed_file_types": {
+					"type": "array",
+					"description": "File types that are allowed in this directory",
+					"items": {
+						"type": "string"
+					}
+				},
+				"tags": {
+					"type": "array",
+					"description": "Tags for categorizing this directory",
+					"items": {
+						"type": "string"
+					}
+				},
+				"workflows": {
+					"type": "array",
+					"description": "Business workflows associated with this directory",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": { "type": "string" },
+							"description": { "type": "string" },
+							"steps": {
+								"type": "array",
+								"items": { "type": "string" }
+							}
+						}
+					}
+				},
+				"subdirectories": {
+					"type": "array",
+					"description": "Array of subdirectories",
+					"items": {
+						"$ref": "#/definitions/directory"
+					}
+				}
+			},
+			"required": ["name", "description"]
+		}
+	}
+}

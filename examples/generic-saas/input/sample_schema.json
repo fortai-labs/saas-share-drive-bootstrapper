@@ -1,0 +1,801 @@
+{
+	"name": "SaaS_Company_Drive",
+	"description": "Centralized repository for all company documents, resources, and assets.",
+	"version": "1.0.0",
+	"last_updated": "2025-03-16T12:00:00Z",
+	"organization": "SaaS Company",
+	"metadata": {
+		"purpose": "Standardized directory structure for SaaS companies to organize all business documents and resources",
+		"governance": {
+			"owner": "Operations Team",
+			"review_cycle": "Quarterly"
+		},
+		"tags": ["saas", "cloud", "startup", "enterprise"]
+	},
+	"directories": [
+		{
+			"name": "01_Administrative",
+			"display_name": "Administrative",
+			"description": "Administrative documents including legal, HR, and financial resources.",
+			"priority": 1,
+			"access_level": "restricted",
+			"retention_policy": "7 years for financial documents, permanent for legal documents",
+			"readme_extra": {
+				"usage_guidelines": "Store all administrative documents here. Ensure sensitive documents are properly secured with appropriate access controls.",
+				"file_naming_convention": "YYYY-MM-DD_DocumentType_Description.ext",
+				"contact_person": {
+					"name": "Operations Manager",
+					"role": "Head of Operations",
+					"email": "operations@company.com",
+					"slack_channel": "#operations"
+				}
+			},
+			"subdirectories": [
+				{
+					"name": "Legal_Documents",
+					"display_name": "Legal Documents",
+					"description": "Legal documents including incorporation papers, contracts, compliance documentation, and intellectual property.",
+					"access_level": "confidential",
+					"retention_policy": "Permanent",
+					"readme_extra": {
+						"usage_guidelines": "This directory contains legally sensitive documents. Only authorized personnel should access or modify these files.",
+						"file_naming_convention": "YYYY-MM-DD_Legal_[Type]_[Party]_[Description].pdf",
+						"contact_person": {
+							"name": "Legal Counsel",
+							"role": "Legal Counsel",
+							"email": "legal@company.com",
+							"slack_channel": "#legal"
+						}
+					},
+					"allowed_file_types": [".pdf", ".docx", ".xlsx"],
+					"subdirectories": [
+						{
+							"name": "Incorporation_and_Business_Formation",
+							"display_name": "Incorporation and Business Formation",
+							"description": "Documents related to company incorporation, business registration, and formation.",
+							"access_level": "confidential"
+						},
+						{
+							"name": "Contracts",
+							"display_name": "Contracts",
+							"description": "All company contracts including vendor agreements, client contracts, and partnerships.",
+							"access_level": "confidential",
+							"readme_extra": {
+								"file_naming_convention": "YYYY-MM-DD_[ContractType]_[PartyName].pdf"
+							}
+						},
+						{
+							"name": "Intellectual_Property",
+							"display_name": "Intellectual Property",
+							"description": "Patents, trademarks, copyrights, and other intellectual property documentation.",
+							"access_level": "confidential"
+						},
+						{
+							"name": "Compliance",
+							"display_name": "Compliance",
+							"description": "Regulatory compliance documentation, certifications, and audit reports.",
+							"access_level": "confidential"
+						}
+					]
+				},
+				{
+					"name": "HR_and_People",
+					"display_name": "HR and People",
+					"description": "Human resources documentation including employee handbooks, hiring resources, benefits information, and team policies.",
+					"access_level": "restricted",
+					"readme_extra": {
+						"usage_guidelines": "Contains sensitive employee information. Access restricted to HR team and management.",
+						"contact_person": {
+							"name": "HR Director",
+							"role": "HR Director",
+							"email": "hr@company.com",
+							"slack_channel": "#hr-team"
+						}
+					},
+					"subdirectories": [
+						{
+							"name": "Employee_Handbook",
+							"display_name": "Employee Handbook",
+							"description": "Current and past versions of the employee handbook.",
+							"access_level": "team"
+						},
+						{
+							"name": "Hiring_and_Recruiting",
+							"display_name": "Hiring and Recruiting",
+							"description": "Job descriptions, interview templates, and recruiting resources.",
+							"access_level": "restricted"
+						},
+						{
+							"name": "Onboarding",
+							"display_name": "Onboarding",
+							"description": "Employee onboarding materials, checklists, and resources.",
+							"access_level": "team"
+						},
+						{
+							"name": "Benefits_and_Compensation",
+							"display_name": "Benefits and Compensation",
+							"description": "Benefits information, compensation structures, and related documentation.",
+							"access_level": "confidential"
+						},
+						{
+							"name": "Performance_Reviews",
+							"display_name": "Performance Reviews",
+							"description": "Performance review templates, guidelines, and historical data.",
+							"access_level": "confidential"
+						}
+					]
+				},
+				{
+					"name": "Finance_and_Accounting",
+					"display_name": "Finance and Accounting",
+					"description": "Financial documentation including budgets, investor reports, expense tracking, and fundraising materials.",
+					"access_level": "confidential",
+					"retention_policy": "7 years minimum, or as required by law",
+					"readme_extra": {
+						"usage_guidelines": "Store all financial documents here. Highly sensitive information with restricted access.",
+						"contact_person": {
+							"name": "Finance Director",
+							"role": "Finance Director",
+							"email": "finance@company.com",
+							"slack_channel": "#finance"
+						}
+					},
+					"subdirectories": [
+						{
+							"name": "Budgets_and_Forecasts",
+							"display_name": "Budgets and Forecasts",
+							"description": "Company budgets, financial forecasts, and planning documents.",
+							"access_level": "confidential"
+						},
+						{
+							"name": "Investor_Relations",
+							"display_name": "Investor Relations",
+							"description": "Investor reports, pitch decks, and fundraising materials.",
+							"access_level": "confidential"
+						},
+						{
+							"name": "Tax_Documents",
+							"display_name": "Tax Documents",
+							"description": "Tax filings, documentation, and related correspondence.",
+							"access_level": "confidential",
+							"retention_policy": "7 years minimum, or as required by tax authorities"
+						},
+						{
+							"name": "Financial_Statements",
+							"display_name": "Financial Statements",
+							"description": "Balance sheets, income statements, cash flow statements, and other financial reports.",
+							"access_level": "confidential"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "02_Product",
+			"display_name": "Product",
+			"description": "Product development materials, including research, specifications, design, and roadmaps.",
+			"priority": 1,
+			"access_level": "team",
+			"readme_extra": {
+				"usage_guidelines": "Central repository for all product development activities. Follow proper versioning for all design documents.",
+				"contact_person": {
+					"name": "Product Lead",
+					"role": "VP of Product",
+					"email": "product@company.com",
+					"slack_channel": "#product-team"
+				}
+			},
+			"subdirectories": [
+				{
+					"name": "Research",
+					"display_name": "Research",
+					"description": "Market research, user research, competitive analysis, and other research materials.",
+					"access_level": "team",
+					"subdirectories": [
+						{
+							"name": "Market_Research",
+							"display_name": "Market Research",
+							"description": "Market analysis, industry trends, and market opportunity assessments."
+						},
+						{
+							"name": "User_Research",
+							"display_name": "User Research",
+							"description": "User interviews, surveys, usability studies, and other user research materials."
+						},
+						{
+							"name": "Competitive_Analysis",
+							"display_name": "Competitive Analysis",
+							"description": "Analysis of competitors, feature comparisons, and competitive positioning."
+						}
+					]
+				},
+				{
+					"name": "Product_Strategy",
+					"display_name": "Product Strategy",
+					"description": "Product vision, strategy documents, and long-term planning materials.",
+					"access_level": "team",
+					"subdirectories": [
+						{
+							"name": "Vision_and_Strategy",
+							"display_name": "Vision and Strategy",
+							"description": "Product vision statements, strategic plans, and long-term objectives."
+						},
+						{
+							"name": "Roadmaps",
+							"display_name": "Roadmaps",
+							"description": "Product roadmaps, release plans, and feature prioritization documents.",
+							"readme_extra": {
+								"file_naming_convention": "YYYY-MM_[ProductName]_Roadmap_v[Version].ext"
+							}
+						}
+					]
+				},
+				{
+					"name": "Product_Design",
+					"display_name": "Product Design",
+					"description": "UI/UX designs, wireframes, mockups, and design systems.",
+					"access_level": "team",
+					"subdirectories": [
+						{
+							"name": "Wireframes",
+							"display_name": "Wireframes",
+							"description": "Low-fidelity wireframes and user flow diagrams."
+						},
+						{
+							"name": "UI_Designs",
+							"display_name": "UI Designs",
+							"description": "High-fidelity UI designs and mockups.",
+							"readme_extra": {
+								"file_naming_convention": "YYYY-MM-DD_[Feature]_[Screen]_v[Version].ext"
+							}
+						},
+						{
+							"name": "Design_System",
+							"display_name": "Design System",
+							"description": "Design system components, guidelines, and assets."
+						},
+						{
+							"name": "Prototypes",
+							"display_name": "Prototypes",
+							"description": "Interactive prototypes and demo materials."
+						}
+					]
+				},
+				{
+					"name": "Product_Requirements",
+					"display_name": "Product Requirements",
+					"description": "Product requirements documents, specifications, and user stories.",
+					"access_level": "team",
+					"readme_extra": {
+						"file_naming_convention": "YYYY-MM-DD_[Feature]_PRD_v[Version].ext"
+					},
+					"subdirectories": [
+						{
+							"name": "PRDs",
+							"display_name": "PRDs",
+							"description": "Product requirements documents for features and products."
+						},
+						{
+							"name": "User_Stories",
+							"display_name": "User Stories",
+							"description": "User stories, acceptance criteria, and related documentation."
+						},
+						{
+							"name": "Technical_Specifications",
+							"display_name": "Technical Specifications",
+							"description": "Technical specifications and architecture documents."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "03_Engineering",
+			"display_name": "Engineering",
+			"description": "Engineering resources including infrastructure configurations, backend and frontend code documentation, and technical architecture.",
+			"priority": 1,
+			"access_level": "team",
+			"readme_extra": {
+				"usage_guidelines": "Store infrastructure configurations, documentation, and engineering resources here. Code should be stored in version control systems and referenced here.",
+				"contact_person": {
+					"name": "Engineering Lead",
+					"role": "CTO or VP of Engineering",
+					"email": "engineering@company.com",
+					"slack_channel": "#engineering"
+				}
+			},
+			"subdirectories": [
+				{
+					"name": "Architecture",
+					"display_name": "Architecture",
+					"description": "System architecture diagrams, technical design documents, and architectural decision records.",
+					"access_level": "team",
+					"readme_extra": {
+						"file_naming_convention": "YYYY-MM-DD_[System]_Architecture_v[Version].ext"
+					}
+				},
+				{
+					"name": "Infrastructure",
+					"display_name": "Infrastructure",
+					"description": "Infrastructure documentation, cloud architecture, and deployment configurations.",
+					"access_level": "team",
+					"subdirectories": [
+						{
+							"name": "Cloud_Infrastructure",
+							"display_name": "Cloud Infrastructure",
+							"description": "Cloud provider configurations, infrastructure as code, and related documentation."
+						},
+						{
+							"name": "Networking",
+							"display_name": "Networking",
+							"description": "Network diagrams, configurations, and related documentation."
+						},
+						{
+							"name": "Security",
+							"display_name": "Security",
+							"description": "Security configurations, policies, and related documentation.",
+							"access_level": "restricted"
+						}
+					]
+				},
+				{
+					"name": "DevOps",
+					"display_name": "DevOps",
+					"description": "CI/CD pipelines, deployment processes, and operational documentation.",
+					"access_level": "team",
+					"subdirectories": [
+						{
+							"name": "CI_CD",
+							"display_name": "CI/CD",
+							"description": "Continuous integration and deployment pipeline configurations and documentation."
+						},
+						{
+							"name": "Monitoring",
+							"display_name": "Monitoring",
+							"description": "Monitoring configurations, alerting rules, and dashboards."
+						},
+						{
+							"name": "Runbooks",
+							"display_name": "Runbooks",
+							"description": "Operational runbooks and procedure documentation."
+						}
+					]
+				},
+				{
+					"name": "API_Documentation",
+					"display_name": "API Documentation",
+					"description": "API specifications, documentation, and integration guides.",
+					"access_level": "team",
+					"subdirectories": [
+						{
+							"name": "Internal_APIs",
+							"display_name": "Internal APIs",
+							"description": "Documentation for internal APIs."
+						},
+						{
+							"name": "External_APIs",
+							"display_name": "External APIs",
+							"description": "Documentation for external/public APIs."
+						},
+						{
+							"name": "Integration_Guides",
+							"display_name": "Integration Guides",
+							"description": "Guides for integrating with third-party services and APIs."
+						}
+					]
+				},
+				{
+					"name": "Database",
+					"display_name": "Database",
+					"description": "Database schemas, data models, and database administration documentation.",
+					"access_level": "restricted",
+					"subdirectories": [
+						{
+							"name": "Schemas",
+							"display_name": "Schemas",
+							"description": "Database schema definitions and documentation."
+						},
+						{
+							"name": "Data_Models",
+							"display_name": "Data Models",
+							"description": "Data model documentation and entity relationship diagrams."
+						},
+						{
+							"name": "Migration_Scripts",
+							"display_name": "Migration Scripts",
+							"description": "Database migration scripts and procedures."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "04_Sales_and_Marketing",
+			"display_name": "Sales and Marketing",
+			"description": "Sales and marketing materials including sales enablement, marketing campaigns, and customer success resources.",
+			"priority": 2,
+			"access_level": "team",
+			"readme_extra": {
+				"usage_guidelines": "Store all sales and marketing materials here. Ensure customer data is handled according to privacy policies.",
+				"contact_person": {
+					"name": "Marketing Lead",
+					"role": "VP of Marketing",
+					"email": "marketing@company.com",
+					"slack_channel": "#marketing"
+				}
+			},
+			"subdirectories": [
+				{
+					"name": "Marketing",
+					"display_name": "Marketing",
+					"description": "Marketing materials, campaigns, and brand assets.",
+					"access_level": "team",
+					"subdirectories": [
+						{
+							"name": "Brand_Assets",
+							"display_name": "Brand Assets",
+							"description": "Logos, brand guidelines, and visual identity materials."
+						},
+						{
+							"name": "Campaigns",
+							"display_name": "Campaigns",
+							"description": "Marketing campaign plans, assets, and results.",
+							"readme_extra": {
+								"file_naming_convention": "YYYY-MM_[CampaignName]_[AssetType].ext"
+							}
+						},
+						{
+							"name": "Content",
+							"display_name": "Content",
+							"description": "Blog posts, whitepapers, ebooks, and other content marketing materials."
+						},
+						{
+							"name": "Website",
+							"display_name": "Website",
+							"description": "Website content, landing pages, and related materials."
+						},
+						{
+							"name": "Social_Media",
+							"display_name": "Social Media",
+							"description": "Social media content, schedules, and analytics."
+						}
+					]
+				},
+				{
+					"name": "Sales",
+					"display_name": "Sales",
+					"description": "Sales enablement materials, pricing, and sales processes.",
+					"access_level": "team",
+					"subdirectories": [
+						{
+							"name": "Sales_Enablement",
+							"display_name": "Sales Enablement",
+							"description": "Sales decks, battle cards, and other enablement materials."
+						},
+						{
+							"name": "Pricing",
+							"display_name": "Pricing",
+							"description": "Pricing models, strategies, and related documentation.",
+							"access_level": "restricted"
+						},
+						{
+							"name": "Sales_Process",
+							"display_name": "Sales Process",
+							"description": "Sales process documentation, playbooks, and scripts."
+						},
+						{
+							"name": "Competitive_Intelligence",
+							"display_name": "Competitive Intelligence",
+							"description": "Competitive analysis and intelligence for sales teams."
+						}
+					]
+				},
+				{
+					"name": "Customer_Success",
+					"display_name": "Customer Success",
+					"description": "Customer success materials, onboarding, and support resources.",
+					"access_level": "team",
+					"subdirectories": [
+						{
+							"name": "Onboarding",
+							"display_name": "Onboarding",
+							"description": "Customer onboarding materials, guides, and processes."
+						},
+						{
+							"name": "Training",
+							"display_name": "Training",
+							"description": "Customer training materials and documentation."
+						},
+						{
+							"name": "Support",
+							"display_name": "Support",
+							"description": "Support documentation, troubleshooting guides, and FAQs."
+						},
+						{
+							"name": "Customer_Feedback",
+							"display_name": "Customer Feedback",
+							"description": "Customer feedback, surveys, and voice of customer data."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "05_Data_and_Analytics",
+			"display_name": "Data and Analytics",
+			"description": "Data analytics, business intelligence, and reporting resources.",
+			"priority": 2,
+			"access_level": "restricted",
+			"readme_extra": {
+				"usage_guidelines": "Store data analysis, reports, and analytics resources here. Ensure sensitive data is properly secured.",
+				"contact_person": {
+					"name": "Data Lead",
+					"role": "Head of Data",
+					"email": "data@company.com",
+					"slack_channel": "#data-team"
+				}
+			},
+			"subdirectories": [
+				{
+					"name": "Business_Intelligence",
+					"display_name": "Business Intelligence",
+					"description": "Business intelligence reports, dashboards, and analysis.",
+					"access_level": "restricted",
+					"subdirectories": [
+						{
+							"name": "Dashboards",
+							"display_name": "Dashboards",
+							"description": "Business intelligence dashboards and visualizations."
+						},
+						{
+							"name": "Reports",
+							"display_name": "Reports",
+							"description": "Regular business reports and analysis.",
+							"readme_extra": {
+								"file_naming_convention": "YYYY-MM_[ReportName]_v[Version].ext"
+							}
+						}
+					]
+				},
+				{
+					"name": "Data_Analysis",
+					"display_name": "Data Analysis",
+					"description": "Data analysis projects, methodologies, and results.",
+					"access_level": "restricted",
+					"subdirectories": [
+						{
+							"name": "Product_Analytics",
+							"display_name": "Product Analytics",
+							"description": "Product usage analytics and analysis."
+						},
+						{
+							"name": "Customer_Analytics",
+							"display_name": "Customer Analytics",
+							"description": "Customer behavior analytics and analysis."
+						},
+						{
+							"name": "Market_Analytics",
+							"display_name": "Market Analytics",
+							"description": "Market and competitive analytics."
+						}
+					]
+				},
+				{
+					"name": "Data_Governance",
+					"display_name": "Data Governance",
+					"description": "Data governance policies, data dictionaries, and metadata management.",
+					"access_level": "restricted",
+					"subdirectories": [
+						{
+							"name": "Data_Dictionary",
+							"display_name": "Data Dictionary",
+							"description": "Data definitions, schemas, and metadata documentation."
+						},
+						{
+							"name": "Data_Quality",
+							"display_name": "Data Quality",
+							"description": "Data quality metrics, monitoring, and improvement plans."
+						},
+						{
+							"name": "Data_Policies",
+							"display_name": "Data Policies",
+							"description": "Data governance policies, procedures, and standards."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "06_Operations",
+			"display_name": "Operations",
+			"description": "Operational resources including IT, security, and facilities management.",
+			"priority": 2,
+			"access_level": "team",
+			"readme_extra": {
+				"usage_guidelines": "Store operational documentation and resources here.",
+				"contact_person": {
+					"name": "Operations Lead",
+					"role": "Head of Operations",
+					"email": "operations@company.com",
+					"slack_channel": "#operations"
+				}
+			},
+			"subdirectories": [
+				{
+					"name": "IT",
+					"display_name": "IT",
+					"description": "IT policies, procedures, and resources.",
+					"access_level": "team",
+					"subdirectories": [
+						{
+							"name": "Policies",
+							"display_name": "Policies",
+							"description": "IT policies and procedures."
+						},
+						{
+							"name": "Asset_Management",
+							"display_name": "Asset Management",
+							"description": "IT asset inventory and management documentation."
+						},
+						{
+							"name": "Software_Licenses",
+							"display_name": "Software Licenses",
+							"description": "Software license management and documentation."
+						}
+					]
+				},
+				{
+					"name": "Security",
+					"display_name": "Security",
+					"description": "Security policies, procedures, and resources.",
+					"access_level": "restricted",
+					"subdirectories": [
+						{
+							"name": "Policies",
+							"display_name": "Policies",
+							"description": "Security policies and procedures."
+						},
+						{
+							"name": "Audits",
+							"display_name": "Audits",
+							"description": "Security audit reports and findings."
+						},
+						{
+							"name": "Incident_Response",
+							"display_name": "Incident Response",
+							"description": "Security incident response plans and documentation."
+						}
+					]
+				},
+				{
+					"name": "Facilities",
+					"display_name": "Facilities",
+					"description": "Facilities management documentation and resources.",
+					"access_level": "team",
+					"subdirectories": [
+						{
+							"name": "Office_Management",
+							"display_name": "Office Management",
+							"description": "Office management documentation and resources."
+						},
+						{
+							"name": "Remote_Work",
+							"display_name": "Remote Work",
+							"description": "Remote work policies and resources."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "07_Internal_Communications",
+			"display_name": "Internal Communications",
+			"description": "Internal communications, company announcements, and knowledge sharing resources.",
+			"priority": 3,
+			"access_level": "team",
+			"readme_extra": {
+				"usage_guidelines": "Store internal communications and knowledge sharing resources here.",
+				"contact_person": {
+					"name": "Internal Comms",
+					"role": "Internal Communications Manager",
+					"email": "internal-comms@company.com",
+					"slack_channel": "#announcements"
+				}
+			},
+			"subdirectories": [
+				{
+					"name": "Company_Announcements",
+					"display_name": "Company Announcements",
+					"description": "Company-wide announcements and communications.",
+					"access_level": "team"
+				},
+				{
+					"name": "All_Hands",
+					"display_name": "All Hands",
+					"description": "All-hands meeting materials and recordings.",
+					"access_level": "team",
+					"readme_extra": {
+						"file_naming_convention": "YYYY-MM-DD_All_Hands_[Topic].ext"
+					}
+				},
+				{
+					"name": "Knowledge_Base",
+					"display_name": "Knowledge Base",
+					"description": "Internal knowledge base articles and resources.",
+					"access_level": "team"
+				},
+				{
+					"name": "Training",
+					"display_name": "Training",
+					"description": "Internal training materials and resources.",
+					"access_level": "team"
+				}
+			]
+		},
+		{
+			"name": "08_Projects",
+			"display_name": "Projects",
+			"description": "Cross-functional project documentation and resources.",
+			"priority": 2,
+			"access_level": "team",
+			"readme_extra": {
+				"usage_guidelines": "Store cross-functional project documentation here. Create a new directory for each major project.",
+				"file_naming_convention": "YYYY-MM-DD_[ProjectName]_[DocumentType].ext",
+				"contact_person": {
+					"name": "Project Management",
+					"role": "Head of Project Management",
+					"email": "projects@company.com",
+					"slack_channel": "#projects"
+				}
+			},
+			"subdirectories": [
+				{
+					"name": "Project_Templates",
+					"display_name": "Project Templates",
+					"description": "Project templates, methodologies, and best practices.",
+					"access_level": "team"
+				},
+				{
+					"name": "Active_Projects",
+					"display_name": "Active Projects",
+					"description": "Documentation for currently active projects.",
+					"access_level": "team"
+				},
+				{
+					"name": "Completed_Projects",
+					"display_name": "Completed Projects",
+					"description": "Documentation for completed projects.",
+					"access_level": "team"
+				}
+			]
+		},
+		{
+			"name": "09_Archives",
+			"display_name": "Archives",
+			"description": "Archived materials including retired projects, old versions, and historical documents.",
+			"priority": 4,
+			"access_level": "team",
+			"retention_policy": "As needed for historical reference or legal requirements",
+			"readme_extra": {
+				"usage_guidelines": "Store archived materials here. Organize by year and category."
+			},
+			"subdirectories": [
+				{
+					"name": "Retired_Products",
+					"display_name": "Retired Products",
+					"description": "Documentation for retired products and features."
+				},
+				{
+					"name": "Historical_Documents",
+					"display_name": "Historical Documents",
+					"description": "Historical company documents and materials."
+				},
+				{
+					"name": "Previous_Versions",
+					"display_name": "Previous Versions",
+					"description": "Previous versions of important documents and materials."
+				}
+			]
+		}
+	]
+}
