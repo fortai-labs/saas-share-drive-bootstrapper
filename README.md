@@ -1,5 +1,8 @@
 # aidir
 
+[![Build Status][build-badge]][build]
+[![Coverage Status][coverage-badge]][coverage]
+
 A Rust CLI tool for bootstrapping AI-ready directory structures for startups and organizations based on a standardized schema defined in JSON.
 
 ## Introduction
@@ -196,3 +199,8 @@ Each README.md file contains structured information about its directory, making 
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+[build]: https://github.com/fortai-legal/aidir/actions
+[build-badge]: https://github.com/fortai-legal/aidir/workflows/CI/badge.svg
+[coverage]: https://codecov.io/gh/fortai-legal/aidir
+[coverage-badge]: https://codecov.io/gh/fortai-legal/aidir/graph/badge.svg?token=CX8KVQOXYP
