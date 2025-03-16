@@ -32,8 +32,10 @@ fn main() -> Result<()> {
             if !skip_validation {
                 info!("Validating schema...");
                 validator::validate_schema_file(&schema)?;
+                println!("Schema validation successful");
                 info!("Schema validation successful");
             } else {
+                println!("Schema validation skipped");
                 warn!("Schema validation skipped");
             }
             
@@ -45,6 +47,7 @@ fn main() -> Result<()> {
             info!("Generating directory structure at: {:?}", output);
             generator::generate_structure(&structure, &output, organization.as_deref())?;
             
+            println!("Directory structure created successfully");
             info!("Directory structure created successfully");
         }
         
@@ -53,6 +56,7 @@ fn main() -> Result<()> {
             
             validator::validate_schema_file(&schema)?;
             
+            println!("Schema validation successful");
             info!("Schema validation successful");
         }
         
@@ -61,6 +65,7 @@ fn main() -> Result<()> {
             
             generator::generate_sample_schema(&output)?;
             
+            println!("Sample schema generated successfully");
             info!("Sample schema generated successfully");
         }
     }

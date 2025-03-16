@@ -3,8 +3,8 @@ use std::path::PathBuf;
 
 #[derive(Parser, Debug)]
 #[command(
-    name = "saas-share-drive-bootstrapper",
-    about = "Bootstrap shared network storage for SaaS companies",
+    name = "aidir",
+    about = "Bootstrap AI-ready directory structures for startups and organizations",
     version,
     author
 )]

@@ -1,10 +1,10 @@
-# SaaS Share Drive Bootstrapper
+# aidir
 
-A Rust CLI tool for bootstrapping shared network storage for SaaS companies and other organizations based on a standardized directory structure defined in JSON.
+A Rust CLI tool for bootstrapping AI-ready directory structures for startups and organizations based on a standardized schema defined in JSON.
 
 ## Introduction
 
-In today's AI-powered workplace, organizing your company's digital assets isn't just about tidiness—it's about unlocking intelligence. The SaaS Share Drive Bootstrapper creates structured, AI-ready file systems that transform passive storage into active knowledge repositories.
+In today's AI-powered workplace, organizing your company's digital assets isn't just about tidiness—it's about unlocking intelligence. The aidir tool creates structured, AI-ready file systems that transform passive storage into active knowledge repositories.
 
 By generating directories with rich metadata and AI-friendly YAML frontmatter, this tool creates an environment where:
 
@@ -23,6 +23,7 @@ Stop building file systems for humans alone. Create directory structures that wo
 - Support for nested directory hierarchies with proper inheritance of properties
 - Validate JSON schemas against the schema definition
 - Generate sample JSON schemas to get started quickly
+- Comprehensive test suite for validating functionality
 
 ## Installation
 
@@ -31,8 +32,8 @@ Stop building file systems for humans alone. Create directory structures that wo
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/fortai-labs/saas-share-drive-bootstrapper.git
-cd saas-share-drive-bootstrapper
+git clone https://github.com/fortai-labs/aidir.git
+cd aidir
 ```
 
 2. Build the project:
@@ -41,14 +42,14 @@ cd saas-share-drive-bootstrapper
 cargo build --release
 ```
 
-3. The binary will be available at `target/release/saas-share-drive-bootstrapper`
+3. The binary will be available at `target/release/aidir`
 
 ## Usage
 
 ### Create a Directory Structure
 
 ```bash
-saas-share-drive-bootstrapper create --schema path/to/schema.json --output path/to/output/dir --organization "Your Company Name"
+aidir create --schema path/to/schema.json --output path/to/output/dir --organization "Your Company Name"
 ```
 
 Options:
@@ -61,13 +62,13 @@ Options:
 ### Validate a Schema
 
 ```bash
-saas-share-drive-bootstrapper validate --schema path/to/schema.json
+aidir validate --schema path/to/schema.json
 ```
 
 ### Generate a Sample Schema
 
 ```bash
-saas-share-drive-bootstrapper generate --output path/to/output/schema.json
+aidir generate --output path/to/output/schema.json
 ```
 
 ## Schema Format
@@ -118,6 +119,23 @@ The schema follows a specific JSON format that defines the directory structure. 
 
 For a complete example, see the [sample schema](examples/generic-saas/input/sample_schema.json).
 
+## Testing
+
+The project includes a comprehensive test suite that validates all aspects of functionality:
+
+```bash
+cargo test
+```
+
+The test suite includes:
+
+- Unit tests for core functionality
+- Integration tests for CLI commands
+- Fixture tests using example data
+- Schema validation tests
+- Markdown generation tests
+- Directory regeneration tests
+
 ## Generated Output
 
 The tool generates a complete directory structure with README files for each directory. Each README includes:
@@ -133,7 +151,7 @@ The tool generates a complete directory structure with README files for each dir
 
 ### Example Directory Structure
 
-Below is an example of a generated directory structure for a SaaS company:
+Below is an example of a generated directory structure for a startup:
 
 ```
 output/

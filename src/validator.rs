@@ -95,4 +95,123 @@ fn validate_directory(dir: &Value, index: usize) -> Result<()> {
     }
     
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use serde_json::json;
+
+    #[test]
+    fn test_validate_schema_valid() {
+        let valid_schema = json!({
+            "name": "Test Schema",
+            "description": "A test schema",
+            "version": "1.0.0",
+            "directories": [
+                {
+                    "name": "test-dir",
+                    "description": "A test directory"
+                }
+            ]
+        });
+
+        let result = validate_schema(&valid_schema);
+        assert!(result.is_ok());
+    }
+
+    #[test]
+    fn test_validate_schema_missing_field() {
+        let invalid_schema = json!({
+            "name": "Test Schema",
+            "description": "A test schema",
+            // Missing "version" field
+            "directories": [
+                {
+                    "name": "test-dir",
+                    "description": "A test directory"
+                }
+            ]
+        });
+
+        let result = validate_schema(&invalid_schema);
+        assert!(result.is_err());
+        match result {
+            Err(AppError::MissingField(msg)) => {
+                assert!(msg.contains("version"));
+            },
+            _ => panic!("Expected MissingField error"),
+        }
+    }
+
+    #[test]
+    fn test_validate_schema_empty_directories() {
+        let invalid_schema = json!({
+            "name": "Test Schema",
+            "description": "A test schema",
+            "version": "1.0.0",
+            "directories": []
+        });
+
+        let result = validate_schema(&invalid_schema);
+        assert!(result.is_err());
+        match result {
+            Err(AppError::InvalidSchema(msg)) => {
+                assert!(msg.contains("empty"));
+            },
+            _ => panic!("Expected InvalidSchema error"),
+        }
+    }
+
+    #[test]
+    fn test_validate_directory_missing_field() {
+        let dir = json!({
+            "name": "test-dir"
+            // Missing "description" field
+        });
+
+        let result = validate_directory(&dir, 0);
+        assert!(result.is_err());
+        match result {
+            Err(AppError::MissingField(msg)) => {
+                assert!(msg.contains("description"));
+            },
+            _ => panic!("Expected MissingField error"),
+        }
+    }
+
+    #[test]
+    fn test_validate_directory_with_subdirectories() {
+        let dir = json!({
+            "name": "test-dir",
+            "description": "A test directory",
+            "subdirectories": [
+                {
+                    "name": "sub-dir",
+                    "description": "A sub directory"
+                }
+            ]
+        });
+
+        let result = validate_directory(&dir, 0);
+        assert!(result.is_ok());
+    }
+
+    #[test]
+    fn test_validate_directory_with_invalid_subdirectories() {
+        let dir = json!({
+            "name": "test-dir",
+            "description": "A test directory",
+            "subdirectories": "not-an-array"
+        });
+
+        let result = validate_directory(&dir, 0);
+        assert!(result.is_err());
+        match result {
+            Err(AppError::InvalidSchema(msg)) => {
+                assert!(msg.contains("subdirectories"));
+            },
+            _ => panic!("Expected InvalidSchema error"),
+        }
+    }
 } 
